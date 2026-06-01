@@ -1,0 +1,6 @@
+{
+  "name": "Arkvoid",
+  "description": "AI Trust Infrastructure - Decentralized consensus, security, and governance for AI agents and automated decisions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

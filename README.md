@@ -1,11 +1,28 @@
-<div align="center">
+# Arkvoid
+> The trust infrastructure for the AI economy.
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Arkvoid provides essential governance, monitoring, and validation infrastructure to ensure that AI and LLM outputs are safe, reliable, and compliant before they reach production systems or end-users.
 
-  <h1>Built with AI Studio</h2>
+## Subdomains
+| Subdomain | Purpose | App |
+|---|---|---|
+| arkvoid.com | Marketing | apps/web |
+| app.arkvoid.com | Platform | apps/app |
+| auth.arkvoid.com | Authentication | apps/auth |
+| docs.arkvoid.com | Documentation | External (Mintlify) |
+| trust.arkvoid.com | Security Center | apps/trust |
+| api.arkvoid.com | API Gateway | Via Supabase |
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Tech Stack
+Next.js 14 · TypeScript · Tailwind CSS v3 · 
+Framer Motion · Supabase · pnpm workspaces · Turbo
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Quick Start
 
-</div>
+Prerequisites: Node.js 18+, pnpm 9+
+
+```bash
+git clone https://github.com/arkvoidai/arkvoid
+cd arkvoid
+pnpm install
+```

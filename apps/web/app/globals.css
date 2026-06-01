@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #000000;
+    --surface-1: #0C0C0C;
+    --surface-2: #141414;
+    --border: #1E1E1E;
+    --text-1: #FFFFFF;
+    --text-2: #A0A0A0;
+    --accent: #CCFF00;
+    --transition: 200ms cubic-bezier(0.4,0,0.2,1);
+    --spring: 500ms cubic-bezier(0.16,1,0.3,1);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    border-color: #1E1E1E;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  body {
+    background: #000000;
+    color: #FFFFFF;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    overflow-x: hidden;
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background: rgba(204,255,0,0.2);
+    color: #FFFFFF;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(204,255,0,0.6);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  input, textarea, select, button { font-family: inherit; }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea { font-size: max(16px, 1em); }
+  
+  @media (min-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea { font-size: 14px; }
+  }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2C2C2C; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3A3A3A; }
+  * { scrollbar-width: thin; scrollbar-color: #2C2C2C transparent; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient-charge {
+    background: linear-gradient(135deg, #CCFF00 0%, #FFFFFF 60%, #CCFF00 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-white {
+    background: linear-gradient(135deg, #FFFFFF 0%, #888888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .surface-1 {
+    background: #0C0C0C;
+    border: 1px solid #1E1E1E;
+  }
+
+  .surface-2 {
+    background: #141414;
+    border: 1px solid #2C2C2C;
+  }
+
+  .surface-charge {
+    background: rgba(204,255,0,0.05);
+    border: 1px solid rgba(204,255,0,0.15);
+  }
+
+  .glass {
+    background: rgba(12,12,12,0.85);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .content-width {
+    max-width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(20px, 5vw, 80px);
+    padding-right: clamp(20px, 5vw, 80px);
+  }
+
+  .section-pad {
+    padding-top: clamp(80px, 10vw, 140px);
+    padding-bottom: clamp(80px, 10vw, 140px);
+  }
+
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  .shimmer {
+    background: linear-gradient(90deg, #0C0C0C 25%, #1C1C1C 50%, #0C0C0C 75%);
+    background-size: 400% 100%;
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .glow-charge { box-shadow: 0 0 40px rgba(204,255,0,0.12), 0 0 80px rgba(204,255,0,0.05); }
+  .glow-charge-sm { box-shadow: 0 0 20px rgba(204,255,0,0.2); }
+
+  .interactive-card {
+    transition: transform 200ms cubic-bezier(0.16,1,0.3,1),
+                box-shadow 200ms ease,
+                border-color 200ms ease;
+  }
+  .interactive-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 8px 32px rgba(0,0,0,0.8);
+    border-color: #3A3A3A;
+  }
+  
+  .charge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #CCFF00;
+    color: #000000;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background 150ms ease, transform 150ms ease;
+    box-shadow: 0 0 20px rgba(204,255,0,0.15);
+    white-space: nowrap;
+  }
+  .charge-btn:hover { background: #B8E600; }
+  .charge-btn:active { transform: scale(0.97); }
+}

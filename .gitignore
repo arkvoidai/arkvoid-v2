@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js builds
+.next/
+out/
+dist/
+build/
+
+# Environment files — NEVER COMMIT
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# Keep examples
+!.env.example
+!.env.*.example
+
+# Vercel
+.vercel/
+
+# Turborepo
+.turbo/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/settings.json
+.idea/
+
+# Coverage
+coverage/

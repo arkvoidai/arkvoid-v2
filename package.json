@@ -1,0 +1,45 @@
+{
+  "name": "arkvoid",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "packageManager": "npm@10.8.1",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "build": "turbo run build",
+    "start": "NODE_OPTIONS=--max-old-space-size=400 turbo run start",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.35",
+    "postcss": "^8.4.39",
+    "prettier": "^3.3.0",
+    "tailwindcss": "^4.0.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.5.3",
+    "vite": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "framer-motion": "^11.3.0",
+    "lucide-react": "^0.400.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.0"
+  }
+}
