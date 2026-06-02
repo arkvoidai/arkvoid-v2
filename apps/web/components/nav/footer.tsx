@@ -1,3 +1,5 @@
+import { siteConfig } from '../../lib/site-config';
+
 export function Footer() {
   return (
     <footer className="bg-black border-t border-[#1E1E1E]">
@@ -37,29 +39,29 @@ export function Footer() {
           <div>
             <h3 className="text-[10px] uppercase tracking-[0.12em] text-[#2C2C2C] mb-4">Developers</h3>
             <ul className="flex flex-col">
-              <li><a href="https://docs.arkvoid.com" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Documentation</a></li>
-              <li><a href="https://api.arkvoid.com" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">API Reference</a></li>
-              <li><a href="#" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">SDK</a></li>
-              <li><a href="#" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Status</a></li>
-              <li><a href="#" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">GitHub</a></li>
+              <li><a href={siteConfig.docsUrl} className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Documentation</a></li>
+              <li><a href={siteConfig.apiUrl} className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">API Reference</a></li>
+              <li><a href="/" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">SDK</a></li>
+              <li><a href="/" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Status</a></li>
+              <li><a href="/" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">GitHub</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-[10px] uppercase tracking-[0.12em] text-[#2C2C2C] mb-4">Company</h3>
             <ul className="flex flex-col">
-              <li><a href="#" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">About</a></li>
+              <li><a href="/" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">About</a></li>
               <li><a href="/blog" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Blog</a></li>
               <li><a href="/#pricing" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Pricing</a></li>
-              <li><a href="#" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Careers</a></li>
-              <li><a href="mailto:heyarkvoid@gmail.com" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Contact</a></li>
+              <li><a href="/" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Careers</a></li>
+              <li><a href={`mailto:${siteConfig.contactEmail}`} className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Contact</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-[10px] uppercase tracking-[0.12em] text-[#2C2C2C] mb-4">Trust</h3>
             <ul className="flex flex-col">
-              <li><a href="https://trust.arkvoid.com" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Security</a></li>
+              <li><a href={siteConfig.trustUrl} className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Security</a></li>
               <li><a href="/privacy" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Privacy Policy</a></li>
               <li><a href="/terms" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">Terms of Service</a></li>
               <li><a href="/compliance" className="block text-[13px] text-[#3A3A3A] hover:text-[#A0A0A0] transition-colors py-1">EU AI Act</a></li>

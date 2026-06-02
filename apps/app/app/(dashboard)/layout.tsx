@@ -3,6 +3,7 @@ import { createClient } from '../../lib/supabase/server'
 import { Sidebar } from '../../components/layout/sidebar'
 import { Topbar } from '../../components/layout/topbar'
 import { AppProvider } from '../../components/providers/app-provider'
+import { authHref } from '../../lib/site-config'
 
 export const metadata = {
   title: 'Dashboard — Arkvoid',
@@ -15,9 +16,9 @@ export default async function DashboardLayout({
 }) {
   const supabase = createClient()
   
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: { user } } = await supabase.auth.getUser().catch(() => ({ data: { user: null } }))
   if (!user) {
-    redirect('https://auth.arkvoid.com/login')
+    redirect(authHref('/login'))
   }
 
   const { data: profile } = await supabase

@@ -1,5 +1,6 @@
 "use client"
 
+import { siteConfig } from '../../lib/site-config'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { Menu, BookOpen } from 'lucide-react'
@@ -73,7 +74,7 @@ export function Topbar({ org, profile }: TopbarProps) {
         )}
 
         <a 
-          href="https://docs.arkvoid.com" 
+          href={siteConfig.docsUrl} 
           target="_blank" 
           rel="noopener noreferrer"
           className="hidden md:flex p-1"
@@ -82,7 +83,7 @@ export function Topbar({ org, profile }: TopbarProps) {
         </a>
 
         <a 
-          href="https://trust.arkvoid.com"
+          href={siteConfig.trustUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:flex items-center justify-center p-1"

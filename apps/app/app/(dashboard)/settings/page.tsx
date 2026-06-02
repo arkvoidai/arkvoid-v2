@@ -1,4 +1,5 @@
 import { createClient } from '../../../lib/supabase/server';
+import { authHref } from '../../../lib/site-config';
 import { redirect } from 'next/navigation';
 import { SettingsClient } from './settings-client';
 
@@ -8,8 +9,8 @@ export const metadata = {
 
 export default async function SettingsPage() {
   const supabase = createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('https://auth.arkvoid.com/login');
+  const { data: { user } } = await supabase.auth.getUser().catch(() => ({ data: { user: null } }));
+  if (!user) redirect(authHref('/login'));
 
   const { data: profile } = await supabase
     .from('profiles')

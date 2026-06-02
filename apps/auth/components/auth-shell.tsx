@@ -1,5 +1,7 @@
 "use client"
 
+import { siteConfig } from '../lib/site-config'
+
 import { motion } from 'framer-motion'
 
 export function AuthShell({ children }: { children: React.ReactNode }) {
@@ -22,7 +24,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
         />
 
         <div className="relative z-10">
-          <a href="https://arkvoid.com" className="flex items-center gap-2.5 group">
+          <a href={siteConfig.marketingUrl} className="flex items-center gap-2.5 group">
             <div className="w-[28px] h-[28px] relative group-hover:opacity-0 transition-opacity absolute">
               <div className="absolute w-[16px] h-[16px] rounded-sm bg-white top-1 left-1 rotate-12" />
               <div className="absolute w-[16px] h-[16px] rounded-sm bg-[#d96846] top-2.5 left-2.5 -rotate-6 opacity-85" />
