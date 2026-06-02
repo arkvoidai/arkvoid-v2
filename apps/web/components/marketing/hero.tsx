@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, BookOpen, Shield } from 'lucide-react';
+import { authHref, siteConfig } from '../../lib/site-config';
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
@@ -162,7 +163,7 @@ export default function HeroSection() {
         >
           <div className="flex flex-col items-center">
             <a 
-              href="https://auth.arkvoid.com/signup" 
+              href={authHref('/signup')} 
               className="inline-flex items-center gap-2 bg-[#CCFF00] text-black font-medium text-[15px] px-7 py-3.5 rounded-md hover:bg-[#B8E600] active:scale-[0.97] transition-all duration-150 shadow-[0_0_40px_rgba(204,255,0,0.15),_0_0_80px_rgba(204,255,0,0.06)] relative overflow-hidden group"
             >
               <span className="absolute inset-0 bg-[linear-gradient(105deg,transparent_40%,rgba(255,255,255,0.12)_50%,transparent_60%)] -translate-x-full group-hover:translate-x-full transition-transform duration-600 ease-[ease]" />
@@ -176,7 +177,7 @@ export default function HeroSection() {
 
           <div className="flex flex-col items-center self-start">
             <a 
-              href="https://docs.arkvoid.com" 
+              href={siteConfig.docsUrl} 
               className="inline-flex items-center gap-2 text-sm text-[#6e6c76] hover:text-[#cdcbd6] transition-colors py-3"
             >
               <BookOpen size={15} />

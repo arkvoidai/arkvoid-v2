@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '../../lib/supabase/client';
 import { CreditCard, Heart, Users, Zap, ShieldCheck, Eye, EyeOff, Copy } from 'lucide-react';
 import { useToast } from '../../components/ui/toast';
+import { authHref } from '../../lib/site-config';
 
 export default function OnboardingPage() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -23,9 +24,9 @@ export default function OnboardingPage() {
 
   useEffect(() => {
     async function loadData() {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { user } } = await supabase.auth.getUser().catch(() => ({ data: { user: null } }));
       if (!user) {
-        router.push('https://auth.arkvoid.com/login');
+        router.push(authHref('/login'));
         return;
       }
 
@@ -64,7 +65,7 @@ export default function OnboardingPage() {
         .eq('id', org.id);
         
       // update profile done
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { user } } = await supabase.auth.getUser().catch(() => ({ data: { user: null } }));
       if (user) {
         await supabase
           .from('profiles')

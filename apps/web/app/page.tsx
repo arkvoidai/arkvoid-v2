@@ -1,12 +1,10 @@
-// TEMP FIX: All "Start free" buttons use href="#" until auth deploys.
-// Change back to https://auth.arkvoid.com/signup once deployed.
-
 import HeroSection from '../components/marketing/hero';
 import { StatsBand } from '../components/marketing/stats-band';
 import { FeaturesSection } from '../components/marketing/features';
 import { PricingSection } from '../components/marketing/pricing';
 import { Footer } from '../components/nav/footer';
 import { AlertTriangle, ShieldOff, AlertCircle } from 'lucide-react';
+import { authHref, siteConfig } from '../lib/site-config';
 
 export default function HomePage() {
   return (
@@ -126,13 +124,13 @@ function CtaSection() {
         
         <div className="mt-10 flex justify-center flex-wrap gap-4 items-center">
           <a
-            href="#"
+            href={authHref('/signup')}
             className="charge-btn text-[15px] px-7 py-3.5"
           >
             Start for free &rarr;
           </a>
           <a
-            href="https://docs.arkvoid.com"
+            href={siteConfig.docsUrl}
             className="text-[14px] text-[#555555] hover:text-[#A0A0A0] transition-colors py-3.5"
           >
             View documentation

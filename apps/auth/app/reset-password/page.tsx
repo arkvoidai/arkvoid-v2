@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Eye, EyeOff, AlertCircle, CheckCircle2 } from 'lucide-react'
 import { createClient } from '../../lib/supabase/client'
+import { appHref } from '../../lib/site-config'
 import { useRouter } from 'next/navigation'
 
 export default function ResetPasswordPage() {
@@ -65,7 +66,7 @@ export default function ResetPasswordPage() {
     } else {
       setStep('success')
       setTimeout(() => {
-        router.push('https://app.arkvoid.com')
+        router.push(appHref())
       }, 2500)
     }
   }

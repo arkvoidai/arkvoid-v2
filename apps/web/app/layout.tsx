@@ -1,29 +1,7 @@
 import { MarketingNav } from '../components/nav/marketing-nav';
 import type { Metadata } from 'next';
-import { Instrument_Serif, Inter, JetBrains_Mono } from 'next/font/google';
+import { siteConfig } from '../lib/site-config';
 import './globals.css';
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-instrument',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-jetbrains',
-  display: 'swap',
-  preload: false,
-});
 
 export const metadata: Metadata = {
   title: {
@@ -34,7 +12,7 @@ export const metadata: Metadata = {
   keywords: ['AI governance', 'AI compliance', 'AI audit trail', 'explainable AI', 'EU AI Act', 'causal attribution'],
   openGraph: {
     type: 'website',
-    url: 'https://arkvoid.com',
+    url: siteConfig.marketingUrl,
     siteName: 'Arkvoid',
     title: 'Arkvoid — AI Trust Infrastructure',
     description: 'Make every AI decision trustworthy.',
@@ -44,9 +22,9 @@ export const metadata: Metadata = {
     site: '@arkvoid',
     title: 'Arkvoid — AI Trust Infrastructure',
   },
-  metadataBase: new URL('https://arkvoid.com'),
+  metadataBase: new URL(siteConfig.marketingUrl),
   alternates: {
-    canonical: 'https://arkvoid.com',
+    canonical: siteConfig.marketingUrl,
   },
   robots: {
     index: true,
@@ -60,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}>
+    <html lang="en" className="antialiased">
       <body className="bg-black text-white font-sans antialiased overflow-x-hidden min-h-[100dvh]">
         <MarketingNav />
         <main>{children}</main>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { CheckCircle2, X as XIcon } from 'lucide-react';
+import { authHref } from '../../lib/site-config';
 
 const plans = [
   {
@@ -12,7 +13,7 @@ const plans = [
     annualPrice: 0,
     priceLabel: 'Free forever',
     cta: 'Start for free',
-    ctaHref: 'https://auth.arkvoid.com/signup',
+    ctaHref: authHref('/signup'),
     featured: false,
     features: [
       '10,000 decisions per month',
@@ -37,7 +38,7 @@ const plans = [
     annualPrice: 39,
     priceLabel: 'per seat / month',
     cta: 'Start 14-day trial',
-    ctaHref: 'https://auth.arkvoid.com/signup?plan=team',
+    ctaHref: authHref('/signup?plan=team'),
     featured: true,
     badge: 'Most popular',
     features: [

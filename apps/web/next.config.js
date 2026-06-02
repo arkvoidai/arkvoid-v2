@@ -1,36 +1,41 @@
+const trimTrailingSlash = (value) => value.replace(/\/+$/, '')
+const publicUrl = (key, fallback) => trimTrailingSlash(process.env[key] || fallback)
+
+const authUrl = publicUrl('NEXT_PUBLIC_AUTH_URL', 'https://auth.arkvoid.com')
+const appUrl = publicUrl('NEXT_PUBLIC_APP_URL', 'https://app.arkvoid.com')
+const docsUrl = publicUrl('NEXT_PUBLIC_DOCS_URL', 'https://docs.arkvoid.com')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
-  },
+  transpilePackages: [],
   async redirects() {
     if (process.env.NODE_ENV === 'development') {
-      return [];
+      return []
     }
     return [
       {
         source: '/login',
-        destination: 'https://auth.arkvoid.com/login',
+        destination: `${authUrl}/login`,
         permanent: false,
       },
       {
         source: '/signup',
-        destination: 'https://auth.arkvoid.com/signup',
-        permanent: false,
-      },
-      {
-        source: '/app',
-        destination: 'https://app.arkvoid.com',
+        destination: `${authUrl}/signup`,
         permanent: false,
       },
       {
         source: '/dashboard',
-        destination: 'https://app.arkvoid.com',
+        destination: appUrl,
+        permanent: false,
+      },
+      {
+        source: '/app',
+        destination: appUrl,
         permanent: false,
       },
       {
         source: '/docs',
-        destination: 'https://docs.arkvoid.com',
+        destination: docsUrl,
         permanent: false,
       },
     ]
@@ -38,57 +43,21 @@ const nextConfig = {
   async rewrites() {
     if (process.env.NODE_ENV === 'development') {
       return [
-        {
-          source: '/login',
-          destination: 'http://127.0.0.1:3001/login',
-        },
-        {
-          source: '/signup',
-          destination: 'http://127.0.0.1:3001/signup',
-        },
-        {
-          source: '/forgot-password',
-          destination: 'http://127.0.0.1:3001/forgot-password',
-        },
-        {
-          source: '/reset-password',
-          destination: 'http://127.0.0.1:3001/reset-password',
-        },
-        {
-          source: '/auth/:path*',
-          destination: 'http://127.0.0.1:3001/auth/:path*',
-        },
-        {
-          source: '/onboarding',
-          destination: 'http://127.0.0.1:3002/onboarding',
-        },
-        {
-          source: '/api-keys',
-          destination: 'http://127.0.0.1:3002/api-keys',
-        },
-        {
-          source: '/decisions',
-          destination: 'http://127.0.0.1:3002/decisions',
-        },
-        {
-          source: '/decisions/:path*',
-          destination: 'http://127.0.0.1:3002/decisions/:path*',
-        },
-        {
-          source: '/governance',
-          destination: 'http://127.0.0.1:3002/governance',
-        },
-        {
-          source: '/settings',
-          destination: 'http://127.0.0.1:3002/settings',
-        },
-        {
-          source: '/app/:path*',
-          destination: 'http://127.0.0.1:3002/:path*',
-        },
-      ];
+        { source: '/login', destination: `${publicUrl('NEXT_PUBLIC_AUTH_URL', 'http://127.0.0.1:3001')}/login` },
+        { source: '/signup', destination: `${publicUrl('NEXT_PUBLIC_AUTH_URL', 'http://127.0.0.1:3001')}/signup` },
+        { source: '/forgot-password', destination: `${publicUrl('NEXT_PUBLIC_AUTH_URL', 'http://127.0.0.1:3001')}/forgot-password` },
+        { source: '/reset-password', destination: `${publicUrl('NEXT_PUBLIC_AUTH_URL', 'http://127.0.0.1:3001')}/reset-password` },
+        { source: '/auth/:path*', destination: `${publicUrl('NEXT_PUBLIC_AUTH_URL', 'http://127.0.0.1:3001')}/auth/:path*` },
+        { source: '/onboarding', destination: `${publicUrl('NEXT_PUBLIC_APP_URL', 'http://127.0.0.1:3002')}/onboarding` },
+        { source: '/api-keys', destination: `${publicUrl('NEXT_PUBLIC_APP_URL', 'http://127.0.0.1:3002')}/api-keys` },
+        { source: '/decisions', destination: `${publicUrl('NEXT_PUBLIC_APP_URL', 'http://127.0.0.1:3002')}/decisions` },
+        { source: '/decisions/:path*', destination: `${publicUrl('NEXT_PUBLIC_APP_URL', 'http://127.0.0.1:3002')}/decisions/:path*` },
+        { source: '/governance', destination: `${publicUrl('NEXT_PUBLIC_APP_URL', 'http://127.0.0.1:3002')}/governance` },
+        { source: '/settings', destination: `${publicUrl('NEXT_PUBLIC_APP_URL', 'http://127.0.0.1:3002')}/settings` },
+        { source: '/app/:path*', destination: `${publicUrl('NEXT_PUBLIC_APP_URL', 'http://127.0.0.1:3002')}/:path*` },
+      ]
     }
-    return [];
+    return []
   },
   async headers() {
     return [
@@ -97,24 +66,13 @@ const nextConfig = {
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
+          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
       {
         source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
     ]
   },

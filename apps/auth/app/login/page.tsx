@@ -6,6 +6,12 @@ import { useRouter } from 'next/navigation'
 import { Eye, EyeOff, AlertCircle, ArrowRight } from 'lucide-react'
 import { AuthShell } from '../../components/auth-shell'
 import { createClient } from '../../lib/supabase/client'
+import { appHref } from '../../lib/site-config'
+
+function getRedirectTo() {
+  if (typeof window === 'undefined') return appHref()
+  return new URLSearchParams(window.location.search).get('redirect') || appHref()
+}
 
 export default function LoginPage() {
   const router = useRouter()
@@ -23,7 +29,7 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${typeof window !== 'undefined' ? window.location.origin : ''}/auth/callback`,
+        redirectTo: `${typeof window !== 'undefined' ? window.location.origin : ''}/auth/callback?next=${encodeURIComponent(getRedirectTo())}`, 
       }
     })
     if (error) {
@@ -65,7 +71,7 @@ export default function LoginPage() {
       setError(msg)
       setLoading(false)
     } else {
-      router.push('https://app.arkvoid.com')
+      router.push(getRedirectTo())
     }
   }
 

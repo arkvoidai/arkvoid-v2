@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Menu, X, ArrowRight, ChevronRight } from 'lucide-react';
+import { authHref, siteConfig } from '../../lib/site-config';
 
 export function MarketingNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,11 +30,11 @@ export function MarketingNav() {
   }, [mobileOpen]);
 
   const navLinks = [
-    { name: 'Product', href: '#' },
-    { name: 'Developers', href: 'https://docs.arkvoid.com' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Trust', href: 'https://trust.arkvoid.com' },
-    { name: 'Blog', href: '#' },
+    { name: 'Product', href: '/#features' },
+    { name: 'Developers', href: siteConfig.docsUrl },
+    { name: 'Pricing', href: '/#pricing' },
+    { name: 'Trust', href: siteConfig.trustUrl },
+    { name: 'Blog', href: '/blog' },
   ];
 
   const mobileNavLinks = [
@@ -76,13 +77,13 @@ export function MarketingNav() {
           {/* RIGHT */}
           <div className="flex items-center gap-2">
             <Link
-              href="https://auth.arkvoid.com/login"
+              href={authHref('/login')}
               className="text-[13px] text-[#555555] hover:text-white px-3 py-1.5 transition-colors duration-150 hidden lg:block"
             >
               Sign in
             </Link>
             <a
-              href="https://auth.arkvoid.com/signup"
+              href={authHref('/signup')}
               className="charge-btn !text-[13px] !px-4 !py-2"
             >
               Start free
@@ -156,18 +157,18 @@ export function MarketingNav() {
 
               <div className="px-5 py-5 border-t border-[#1E1E1E]">
                 <a
-                  href="https://auth.arkvoid.com/login"
+                  href={authHref('/login')}
                   className="block w-full border border-[#2C2C2C] text-[#A0A0A0] text-sm py-3 mb-3 rounded-md hover:bg-[#141414] hover:text-white transition-all text-center"
                 >
                   Sign in
                 </a>
                 <a
-                  href="https://auth.arkvoid.com/signup"
+                  href={authHref('/signup')}
                   className="charge-btn !w-full justify-center"
                 >
                   Start free
                 </a>
-                <p className="text-xs text-[#2E2E2E] text-center mt-4">heyarkvoid@gmail.com</p>
+                <p className="text-xs text-[#2E2E2E] text-center mt-4">{siteConfig.contactEmail}</p>
               </div>
             </motion.div>
           </>

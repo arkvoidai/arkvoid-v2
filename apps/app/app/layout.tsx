@@ -1,20 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
 import '../../web/app/globals.css'
 import { ToastProvider } from '../components/ui/toast'
-
-const inter = Inter({ 
-  subsets: ['latin'], 
-  weight: ['300', '400', '500'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className="antialiased">
       <body className="bg-[#000000] text-white antialiased font-sans overflow-hidden">
         <ToastProvider>
           {children}

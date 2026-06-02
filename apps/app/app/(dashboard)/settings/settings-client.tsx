@@ -1,5 +1,6 @@
 "use client"
 
+import { authHref } from '../../../lib/site-config';
 import { useState } from 'react';
 import { createClient } from '../../../lib/supabase/client';
 import { useToast } from '../../../components/ui/toast';
@@ -74,7 +75,7 @@ export function SettingsClient({ profile, org }: { profile: any, org: any }) {
     setSigningOut(true);
     // Delete session approach or auth signout
     await supabase.auth.signOut();
-    window.location.href = 'https://auth.arkvoid.com/login';
+    window.location.href = authHref('/login');
   };
 
   // Usage Math

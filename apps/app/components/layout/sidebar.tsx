@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '../../lib/supabase/client'
+import { authHref, siteConfig } from '../../lib/site-config'
 import { 
   LayoutDashboard, Zap, Globe, ShieldCheck, 
   AlertTriangle, Link as LinkIcon, Key, Webhook, ScrollText, 
@@ -79,7 +80,7 @@ export function Sidebar({ org, profile }: SidebarProps) {
   const handleSignOut = async () => {
     const supabase = createClient();
     await supabase.auth.signOut();
-    window.location.href = 'https://auth.arkvoid.com/login';
+    window.location.href = authHref('/login');
   };
 
   return (
@@ -154,7 +155,7 @@ export function Sidebar({ org, profile }: SidebarProps) {
 
         <div className="mt-2 flex gap-1.5 px-2">
           <a 
-            href="https://docs.arkvoid.com" 
+            href={siteConfig.docsUrl} 
             target="_blank" 
             rel="noopener noreferrer"
             title="Docs"
@@ -163,7 +164,7 @@ export function Sidebar({ org, profile }: SidebarProps) {
             <BookOpen size={14} />
           </a>
           <a 
-            href="https://arkvoid.com" 
+            href={siteConfig.marketingUrl} 
             target="_blank" 
             rel="noopener noreferrer"
             title="Website"

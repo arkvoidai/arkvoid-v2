@@ -3,7 +3,14 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
   content: [
     './app/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}'
+    './components/**/*.{ts,tsx}',
+    './lib/**/*.{ts,tsx}',
+    '../auth/app/**/*.{ts,tsx}',
+    '../auth/components/**/*.{ts,tsx}',
+    '../auth/lib/**/*.{ts,tsx}',
+    '../app/app/**/*.{ts,tsx}',
+    '../app/components/**/*.{ts,tsx}',
+    '../app/lib/**/*.{ts,tsx}'
   ],
   theme: {
     extend: {
@@ -78,6 +85,7 @@ const config: Config = {
         'fade-in': 'fadeIn 0.4s ease both',
         'shimmer': 'shimmer 2.5s ease-in-out infinite',
         'pulse-charge': 'pulseCharge 3s ease-in-out infinite',
+        'pulse-soft': 'pulseCharge 3s ease-in-out infinite',
         'blink': 'blink 1.2s step-end infinite',
         'float': 'float 6s ease-in-out infinite',
         'scan': 'scanLine 4s linear infinite'

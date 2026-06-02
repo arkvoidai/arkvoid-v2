@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AlertCircle, Mail, ArrowLeft } from 'lucide-react'
 import { createClient } from '../../lib/supabase/client'
+import { authHref } from '../../lib/site-config'
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('')
@@ -23,7 +24,7 @@ export default function ForgotPasswordPage() {
     setLoading(true)
     const supabase = createClient()
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: 'https://auth.arkvoid.com/reset-password'
+      redirectTo: authHref('/reset-password')
     })
 
     if (error) {
